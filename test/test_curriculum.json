@@ -1,0 +1,37 @@
+{
+  "terms": 2,
+  "courses": [
+    {
+      "name": "Course 1",
+      "credits": 3,
+      "passrate": 0.5,
+      "term": 1,
+      "corequisites": [],
+      "prerequisites": []
+    },
+    {
+      "name": "Course 2",
+      "credits": 3,
+      "passrate": 0.5,
+      "term": 1,
+      "corequisites": [],
+      "prerequisites": []
+    },
+    {
+      "name": "Course 3",
+      "credits": 3,
+      "passrate": 0.5,
+      "term": 2,
+      "corequisites": [],
+      "prerequisites": ["Course 1"]
+    },
+    {
+      "name": "Course 4",
+      "credits": 3,
+      "passrate": 0.5,
+      "term": 2,
+      "corequisites": [],
+      "prerequisites": ["Course 1"]
+    }
+  ]
+}
