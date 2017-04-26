@@ -41,6 +41,6 @@ end
 # Sets all course model passrates to given value
 function setPassrates(courses, passrate)
     for course in courses
-        course.model[:passrate] = passrate
+        course.passrate = passrate
     end
 end

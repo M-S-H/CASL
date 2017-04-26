@@ -3,6 +3,7 @@ type Curriculum
     terms::Array{Term}          # Array of terms in order
     courses::Array{Course}      # Array of courses in the curriculum
     numCourses::Int             # Number of courses in curriculum
+    creditHours::Int            # Number of credit hours
     
     complexity::Int             # Sum of all course crucialities
     delay::Int                  # Sum of course delay factors
@@ -64,6 +65,8 @@ type Curriculum
         this.numCourses = length(this.courses)
         this.passrate = sum(map(x->x.passrate, this.courses)) / this.numCourses
         this.stopoutModel = Dict()
+
+        this.creditHours = sum(map(x->x.credits, this.courses))
 
         return this
     end
