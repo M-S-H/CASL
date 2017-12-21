@@ -187,17 +187,17 @@ function curriculumCentrality!(curriculum)
     return sum(measures)
 end
 
-
 function curriculumReachability!(curriculum)
     newC = deepcopy(curriculum)
 
     for course in newC.courses
         course.prereqs = Course[]
+        course.postreqs = Course[]
     end
 
     for (ci, course) in enumerate(curriculum.courses)
         for prereq in course.prereqs
-            push!(newC.courses[prereq.id].prereqs, newC.courses[ci])
+            push!(newC.courses[ci].postreqs, newC.courses[prereq.id])
         end
     end
 
