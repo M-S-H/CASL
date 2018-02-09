@@ -9,12 +9,13 @@ module CASL
     include("PassRate.jl")
     include("Simulation.jl")
     include("Helpers.jl")
+    include("Enrollment.jl")
 
     # Exports
-    export Student, Course, Term, Curriculum, Simulation, simulate, cruciality, simpleStudents, setPassrates, passTable, gradeconvert, valueconvert, nearestValue
+    export Student, Course, Term, Curriculum, Simulation, simulate, cruciality, simpleStudents, setPassrates, passTable, gradeconvert, valueconvert
 
     # Simulation Function
-    function simulate(curriculum::Curriculum, students::Array{Student}; performance_model = PassRate, max_credits = 18, duration = 8, durationLock = false, stopouts = false)
+    function simulate(curriculum::Curriculum, students::Array{Student}; performance_model = PassRate, enrollment_model = LinearEnrollment, max_credits = 18, duration = 8, durationLock = false, stopouts = false)
 
         # Create the simulation object
         simulation = Simulation(deepcopy(curriculum))
@@ -68,44 +69,8 @@ module CASL
         # Begin simulation
         for currentTerm = 1:duration
             # Enroll students in courses
-            for (termnum, term) in enumerate(terms)
-                # Itterate through courses
-                for course in term.courses
-                    # Clear the array of enrolled students for the course
-                    course.students = Student[]
-
-                    for student in simulation.enrolledStudents
-                        # Enroll in coreqs first
-                        for coreq in course.coreqs
-                            if canEnroll(student, coreq, studentProgress, max_credits, currentTerm)
-                                # Enroll the student in the course
-                                push!(course.students, student)
-
-                                # Increment the course's enrollment counters
-                                course.enrolled += 1
-                                course.termenrollment[currentTerm] += 1
-
-                                # Increse the student's term credits
-                                student.termcredits += course.credits
-                            end
-                        end
-
-                        # Determine wheter the student can be enrolled in the current course.
-                        if canEnroll(student, course, studentProgress, max_credits, currentTerm)
-                            # Enroll the student in the course
-                            push!(course.students, student)
-
-                            # Increment the course's enrollment counters
-                            course.enrolled += 1
-                            course.termenrollment[currentTerm] += 1
-
-                            # Increse the student's term credits
-                            student.termcredits += course.credits
-                        end
-                    end
-                end 
-            end
-
+            enrollment_model.enroll!(currentTerm, simulation, max_credits)
+            
             # Predict Performance
             for (termnum, term) in enumerate(terms)
                 for course in term.courses

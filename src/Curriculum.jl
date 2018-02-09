@@ -1,4 +1,4 @@
-type Curriculum
+mutable struct Curriculum
     name::AbstractString        # Name of the curriculum (can be used as an identifier)
     terms::Array{Term}          # Array of terms in order
     courses::Array{Course}      # Array of courses in the curriculum
@@ -15,7 +15,6 @@ type Curriculum
     stopoutModel::Dict          # Dictionary that stores the the model for predicint stopouts
     
     graph::Any                  # LightGraph representation
-
 
     function Curriculum(curriculumName::AbstractString, terms::Array{Term})
         this = new()
@@ -74,13 +73,13 @@ type Curriculum
 
     function Curriculum(curriculumName::AbstractString, data::Dict)
         # Sort courses by term
-        sort!(data["courses"], by = x->x["term"])
+        sort!(data["courses"], by = x -> x["term"])
 
         # Get number of terms
         terms = data["terms"]
 
         # Array of course arrays, one for each term
-        courses = Array(Array{Course}, terms)
+        courses = Array{Array{Course}}(terms)
         for i=1:terms
             courses[i] = Course[]
         end

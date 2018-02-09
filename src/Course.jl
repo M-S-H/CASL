@@ -1,4 +1,4 @@
-type Course
+mutable struct Course
     name::AbstractString            # Name of the course
     id::Int                         # Unique id for course
     term::Int                       # The term the course belongs to

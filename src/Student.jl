@@ -1,4 +1,4 @@
-type Student
+mutable struct Student
     id::Int                     # Unique ID for student
     total_credits::Int          # The total number of credit hours the student has earned
     gpa::Float64                # The student's GPA

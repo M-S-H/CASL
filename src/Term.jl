@@ -1,4 +1,4 @@
-type Term
+mutable struct Term
     courses::Array{Course}      # Array of courses for the term
     totalEnrolled::Int          # Total number of students enrolled
     failures::Int               # Number of failures within the term

@@ -1,4 +1,6 @@
-type Simulation
+import CASL: Curriculum
+
+mutable struct Simulation
     curriculum::Curriculum                  # The curriculum that is simulated
     duration::Int                           # The number of terms the simulation runs for
 
