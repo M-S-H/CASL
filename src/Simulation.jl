@@ -1,4 +1,4 @@
-import CASL: Curriculum
+import CurricularAnalyticsSimulationLibrary: Curriculum
 
 mutable struct Simulation
     curriculum::Curriculum                  # The curriculum that is simulated

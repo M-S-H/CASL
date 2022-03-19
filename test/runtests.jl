@@ -1,4 +1,4 @@
-using CASL
+using CurricularAnalyticsSimulationLibrary
 using Base.Test
 
 # Testing Students

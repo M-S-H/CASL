@@ -1,5 +1,5 @@
 module LinearEnrollment
-    using CASL: Student
+    using CurricularAnalyticsSimulationLibrary: Student
 
     function enroll!(currentTerm, simulation, max_credits)
         studentProgress = simulation.studentProgress

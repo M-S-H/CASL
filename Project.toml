@@ -1,0 +1,10 @@
+name = "CurricularAnalyticsSimulationLibrary"
+uuid = "e8c7c3a7-0a09-496c-beb8-b0f07a3bb1c8"
+authors = ["mshickman91@gmail.com"]
+version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
+PathDistribution = "1a7fcfa4-7553-5727-a5d0-072824df3c21"

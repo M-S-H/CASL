@@ -1,6 +1,6 @@
-module CASL
+module CurricularAnalyticsSimulationLibrary
     # Dependencies and Imports
-    using JSON, DataFrames, DataArrays, LightGraphs, PathDistribution
+    using JSON, DataFrames, LightGraphs, PathDistribution
     include("Student.jl")
     include("Course.jl")
     include("Term.jl")
