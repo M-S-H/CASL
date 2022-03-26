@@ -136,7 +136,7 @@ mutable struct Curriculum
 
     function Curriculum(curriculumName::AbstractString, path::AbstractString)
         f = open(path)
-        data = JSON.parse(readstring(f))
+        data = JSON.parse(read(f))
         close(f)
 
         this = Curriculum(curriculumName, data)

@@ -1,5 +1,5 @@
-using CurricularAnalyticsSimulationLibrary
-using Base.Test
+include("../src/CurricularAnalyticsSimulationLibrary.jl")
+using Test
 
 # Testing Students
 student = Student(1, Dict())
