@@ -79,7 +79,7 @@ mutable struct Curriculum
         terms = data["terms"]
 
         # Array of course arrays, one for each term
-        courses = Array{Array{Course}}(terms)
+        courses = Array{Array{Course}}(undef, terms)
         for i=1:terms
             courses[i] = Course[]
         end
@@ -136,7 +136,7 @@ mutable struct Curriculum
 
     function Curriculum(curriculumName::AbstractString, path::AbstractString)
         f = open(path)
-        data = JSON.parse(read(f))
+        data = JSON.parse(read(f, String))
         close(f)
 
         this = Curriculum(curriculumName, data)

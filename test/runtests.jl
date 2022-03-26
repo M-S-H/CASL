@@ -1,4 +1,5 @@
-include("../src/CurricularAnalyticsSimulationLibrary.jl")
+# include("../src/CurricularAnalyticsSimulationLibrary.jl")
+using CurricularAnalyticsSimulationLibrary
 using Test
 
 # Testing Students
